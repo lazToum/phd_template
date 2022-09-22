@@ -65,7 +65,7 @@ def _dir_paths(args):
     # type: (List[str]) -> List[str]
     _args = list(args)
     for key in ['--build-dir', '--output-dir']:
-        if len(_args) > _args.index(key):
+        if key in args and len(_args) > _args.index(key):
             value_index = _args.index(key) + 1
             dir_value = _args[value_index]
             if not os.path.isabs(dir_value):
