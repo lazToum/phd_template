@@ -1,5 +1,7 @@
 .idea/
 .local/
+build/
+dist/
 *minted*
 **cache**
 *.iml
