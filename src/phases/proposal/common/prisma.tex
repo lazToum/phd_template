@@ -1,0 +1,88 @@
+\tikzset{
+    mynode/.style={
+        draw, rectangle, align=center, text width=5cm, font=\small, inner sep=3ex},
+    mylabel/.style={
+        draw, rectangle, align=center, rounded corners, font=\small\bf, inner sep=2ex,
+        fill=cyan!30, minimum height=3.8cm},
+    arrow/.style={
+        very thick,->,>=stealth}
+}
+\begin{chart}[H]
+    \noindent\resizebox{\textwidth}{!}{
+        \centering
+		\begin{tikzpicture}[
+		node distance=1.4cm,
+		start chain=1 going below,
+		every join/.style=arrow,
+		]
+		\coordinate[on chain=1] (tc);
+		\node[mynode, on chain=1] (n2)
+		{\iflanguage{greek}
+			{\# εγγραφών μετά την αφαίρεση διπλοεγγραφών}
+			{\# of records after duplicates removed}};
+		\node[mynode, join, on chain=1] (n3)
+		{\iflanguage{greek}
+			{\# εγγραφών που αναλύθηκαν}
+			{\# of records screened}
+		};
+		\node[mynode, join, on chain=1] (n4)
+		{\iflanguage{greek}
+			{\# άρθρων που προσπελάστηκαν για επιλεξιμότητα}
+			{\# of full-text articles accessed for eligbility}
+		};
+		\node[mynode, join, on chain=1] (n5)
+		{\iflanguage{greek}
+			{\# μελετών που συμπεριλήφθηκαν στην ποιοτική σύνθεση}
+			{\# of studies included in qualitative synthesis}
+		};
+		\node[mynode, join, on chain=1] (n6)
+		{\iflanguage{greek}
+			{\# μελετών που συμπεριλήφθηκαν στην ποσοτική σύνθεση\\ (μετα-ανάλυση)}
+			{\# of studies included in quantitative sysntesis\\ (meta-analysis)}
+		};
+		% the branches to the right
+		\begin{scope}[start chain=going right]
+			\chainin (n3);
+			\node[mynode, join, on chain]
+			{\iflanguage{greek}
+				{\# εγγραφών που απορίφθηκαν}
+				{\# of records excluded}
+			};
+			\chainin (n4);
+			\node[mynode, join, on chain]
+			{\iflanguage{greek}
+				{\# άρθρων που απορίφθηκαν, με δικαιολόγηση}
+				{\# of full-text articles excluded, with reasons}
+			};
+		\end{scope}
+
+		% the nodes at the top
+		\node[mynode, left=1cm of tc, anchor=south east] (n1l)
+		{\iflanguage{greek}
+			{\# εγγραφών που αναγνωρίστηκαν από μηχανές αναζήτησης}
+			{\# of records identified through database searching}
+		};
+		\node[mynode, right=1cm of tc, anchor=south west] (n1r)
+		{\iflanguage{greek}
+			{\# επιπλέον εγγραφών που αναγνωρίστηκαν από άλλες πηγές}
+			{\# of additional records indentified\\ through other sources}
+		};
+		\coordinate (n2nl) at ([xshift=-2cm]n2.north);
+		\coordinate (n2nr) at ([xshift= 2cm]n2.north);
+		\draw[arrow] (n1l.south -| n2nl) -- (n2nl);
+		\draw[arrow] (n1r.south -| n2nr) -- (n2nr);
+
+		% the labels on the left
+		\begin{scope}[start chain=going below, xshift=-8cm, node distance=.8cm]
+			\node[mylabel, on chain] {\rotatebox{90}{\iflanguage{greek}{Αναγνώριση}{Identification}}};
+			\node[mylabel, on chain] {\rotatebox{90}{\iflanguage{greek}{Διαλογή}{Screening}}};
+			\node[mylabel, on chain] {\rotatebox{90}{\iflanguage{greek}{Επιλεξιμότητα}{Eligibility}}};
+			\node[mylabel, on chain] {\rotatebox{90}{\iflanguage{greek}{Συμπερίληψη}{Included}}};
+		\end{scope}
+
+		% the title
+		%			    \node[above=2.5cm of tc, font=\bf] {PRISMA 2009 Flow Diagram};
+	\end{tikzpicture}
+  }
+\caption[\iflanguage{greek}{Διάγραμμα ροής PRISMA}{PRISMA Flow}]{\iflanguage{greek}{Διάγραμμα ροής PRISMA 2009, πηγή:~\cite{liberati2009}}{PRISMA 2009 Flow Diagram, source:~\cite{liberati2009}}}\label{prisma}
+\end{chart}

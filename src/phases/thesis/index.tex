@@ -1,0 +1,72 @@
+\blankpage
+%
+\pagestyle{fancy} % Changes the headers
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Getting the chapter name right
+\renewcommand{\sectionmark}[1]{\markright{\thesection\; #1}} % Getting the section name right
+\fancyhf{}% Clears header and footer
+\fancyhead[RO,LE]{\thepage} % page number on the outside of headers
+\let\cleardoublepage\clearpage%
+\cleardoublepage%
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\engr{%
+    \input{src/phases/thesis/abstract/en}%
+    \textbf{Keywords:}\keywords
+} {%
+    \input{src/phases/thesis/abstract/el}%
+    \textbf{Λέξεις κλειδιά:}\keywords
+    \selectlanguage{english}
+    \cleardoublepage
+    \addtocontents{toc}{\vspace{-.8em}}
+    \input{src/phases/thesis/abstract/en}%
+    \textbf{Keywords:}\keywords
+    \selectlanguage{greek}
+}%
+\cleardoublepage%
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES/CHARTS/FILES
+%----------------------------------------------------------------------------------------
+% use phantomsection for (roman) links to point to the right page
+\phantomsection%
+\tableofcontents % Write out the Table of Contents
+\addtocontents{toc}{\vspace{-.8em}}
+\addcontentsline{toc}{chapter}{\hspace{-.25em}\engr{Contents}{Περιεχόμενα}}
+\addtocontents{toc}{\vspace{-.8em}}
+\cleardoublepage%
+\phantomsection%
+\listoffigures%
+\addcontentsline{toc}{chapter}{\hspace{-.25em}\engr{List of Figures}{Κατάλογος Εικόνων}}
+\addtocontents{toc}{\vspace{-.8em}}
+\cleardoublepage%
+\phantomsection%
+\listoftables%
+\addcontentsline{toc}{chapter}{\hspace{-.25em}\engr{List of Tables}{Κατάλογος Πινάκων}}
+\addtocontents{toc}{\vspace{-.8em}}
+\cleardoublepage%
+\phantomsection%
+\listofcharts%
+\addcontentsline{toc}{chapter}{\hspace{-.25em}\engr{List of Charts}{Κατάλογος Διαγραμμάτων}}
+\addtocontents{toc}{\vspace{-.8em}}
+\cleardoublepage%
+\makeatletter
+\let\l@listing\l@figure%
+\makeatother
+\phantomsection%
+\lstlistoflistings%
+\addcontentsline{toc}{chapter}{\hspace{-.22em}\engr{List of Files}{Κατάλογος Αρχείων}}
+\cleardoublepage%
+%----------------------------------------------------------------------------------------
+%	THESIS MAIN TEXT - CHAPTERS
+%----------------------------------------------------------------------------------------
+\mainmatter%
+\engr{%
+    \input{src/phases/thesis/en/index}%
+} {%
+    \input{src/phases/thesis/el/index}%
+}%
+%----------------------------------------------------------------------------------------
+%	APPENDICES
+%----------------------------------------------------------------------------------------
+\appendix
+\input{src/phases/thesis/appendices/index}

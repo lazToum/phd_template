@@ -1,0 +1,60 @@
+\newcommand{\engr}[2]{
+	\IfLanguageName{english}{#1}{#2}
+}
+%
+\newcommand\FirstPageLogo{%
+	\put(0,330){%
+		\parbox[b][\paperheight]{\paperwidth}{%
+			\vfill
+			\centering
+			\includegraphics[width=3.5cm]{\Logo}%
+			\vfill
+		}
+	}
+}
+%
+\newcommand{\numberedchapter}{
+	\cleardoublepage%
+	\fancyhead[RE]{{\bfseries \leftmark}}% Headers for left pages
+	\fancyhead[LO]{{\bfseries \rightmark}}% Headers for right pages
+}
+%
+\newcommand{\unnumberedchapter}[1]{
+	\cleardoublepage%
+	\addcontentsline{toc}{chapter}{#1} % Also adds the chapter name to the Contents
+	\fancyhead[RE]{{\bfseries{#1}}} % Headers for left pages
+	\fancyhead[LO]{\bfseries \rightmark}%Headers for right pages
+}
+%
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage%
+}
+%
+\setlength{\headheight}{13.999pt}
+%
+\newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
+%
+\newcommand{\eea}{\end{eqnarray}}
+%
+\newcommand{\e}[1]{\times10^{#1}}  % Powers of 10 notation
+%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+% Defining a theorem box for Criteria
+\newtheorem{critere}{Criterion}
+\newcommand{\crit}[2]{
+	\begin{center}
+		\fbox{ \begin{minipage}[c]{0.9 \textwidth}
+				\begin{critere}
+					\textbf{\textup{ #1}} --- #2
+				\end{critere}
+	\end{minipage}  } \end{center}
+}
+%
+% Load file to minted from source code directory
+\definecolor{mintedbg}{rgb}{0.93,0.93,0.93}
+\newcommand{\mintedfile}[2]{\inputminted[xleftmargin=1em,framesep=2mm,linenos=true,bgcolor=mintedbg]{#1}{\CodeDir/#2}}

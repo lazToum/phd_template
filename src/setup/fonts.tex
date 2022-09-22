@@ -1,0 +1,44 @@
+\newcommand{\setFontSpec}{
+	\setmainfont[
+	Path=./fonts/,
+	Extension=.ttf,
+	UprightFont=*-Regular,
+	BoldFont=*-Bold,
+	ItalicFont=*-Italic,
+	BoldItalicFont=*-BoldItalic,
+	SmallCapsFont=*-SmallCaps,
+	FontFace={mb}{n}{*-Semibold},
+	FontFace={mb}{it}{*-SemiboldItalic},
+	Ligatures=TeX
+	]{LinLibertine}
+	\usepackage{unicode-math}
+	\ifluatex%
+	    %TODO: on xetex we get font not found
+    	\setmathfont[
+    		Path=./fonts/,
+    		Scale=MatchUppercase,
+    	]{
+    		LibertinusMath-Regular.otf
+    	}
+	\fi
+}
+\ifxetex%
+	\usepackage{xunicode}
+	\usepackage{xltxtra}
+	\setFontSpec%
+\else%
+	\ifluatex%
+	\setFontSpec%
+	\else%
+	% I don't like the font, use Lua/Xe
+	\usepackage[sfdefault]{libertine}
+	\usepackage{libertinust1math}
+	\fi%
+\fi%
+% in case of error, try deleting the folder:
+% /path/to/texlive/texmf-var/luatex-cache/generic/fonts
+% https://tex.stackexchange.com/a/416185
+%\setsansfont{FreeSans}
+%\setmonofont{FreeMono}
+%\setmonofont{DejaVu Sans Mono}
+%\usepackage{libertine}

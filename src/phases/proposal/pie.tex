@@ -1,0 +1,29 @@
+\newarray\Structure%
+\readarray{Structure}{
+	\iflanguage{greek}{Εισαγωγή, θεωρητικά στοιχεία}{Introduction} & %10%
+	\iflanguage{greek}{Βιβλιογραφική επισκόπηση}{Literature Review} & %35%
+	\iflanguage{greek}{Στόχοι, Μεθοδολογία}{Goals, Methodology} &  %5%
+	\iflanguage{greek}{Σχεδιασμός, Ανάλυση, Υλοποίηση}{Design, Analysis, Development} & %20%
+	\iflanguage{greek}{Εφαρμογή, Αξιολόγηση}{Test, Evaluation} & %15%
+	\iflanguage{greek}{Ανάλυση αποτελεσμάτων}{Findings} & %10%
+	\iflanguage{greek}{Συμπεράσματα, Προτάσεις}{Conclusions, Suggestions} %5%
+}
+
+\begin{figure}[H]
+	\centering%
+	\begin{tikzpicture}[align=left]
+		\tikzset{
+			lines/.style={draw=\thecolor,thick},
+		}
+		\pie[radius=4,text=legend]{
+			10/\Structure(1),
+			35/\Structure(2),
+			5/\Structure(3),
+			20/\Structure(4),
+			15/\Structure(5),
+			10/\Structure(6),
+			5/\Structure(7)
+		}
+	\end{tikzpicture}
+	\caption[\iflanguage{greek}{Ενδεικτική δομή}{Provisinal Structure}]{\iflanguage{greek}{Ενδεικτική κατανομή φόρτου εργασίας της διατριβής}{Provisional Thesis Structure and asignment}}\label{img:pie}
+\end{figure}

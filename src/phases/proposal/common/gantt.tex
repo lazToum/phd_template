@@ -1,0 +1,93 @@
+\newarray\Tasks%
+\readarray{Tasks}{
+    \iflanguage{greek}{
+            Βιβλιογραφική επισκόπηση, \\ Υφιστάμενη
+            κατάσταση
+        }{
+            Bibliography Review
+        }
+    &
+        \iflanguage{greek}{
+            Καταγραφή \& Ανάλυση \\
+            υποθέσεων
+        }{
+            Hypothesis Analysis
+        }
+    &
+        \iflanguage{greek}{
+            Θεμελίωση, Ανάλυση \&  \\
+            Σχεδίαση προσέγγισης
+        } {
+            Model design
+        }
+    &
+        \iflanguage{greek}{
+           $1^{\η}$ έκδοση  \\
+            πρωτοτύπου
+        } {
+            $1^{st}$ Prototype \\
+            Implementation
+        }
+    &
+        \iflanguage{greek}{
+            Δοκιμή, Εντοπισμός και \\
+            επίλυση προβλημάτων
+        } {
+            Testing,\\
+            Problem analysis
+        }
+    &
+        \iflanguage{greek}{
+           $2^{\η}$  έκδοση  \\
+            πρωτοτύπου
+        } {
+            Final Prototype
+        }
+    &
+        \iflanguage{greek}{
+            Καταγραφή, ανάλυση \&  \\
+            ερμηνεία αποτελεσμάτων
+        } {
+            Results analysis
+        }
+    &
+        \iflanguage{greek}{
+            Συγγραφή διατριβής\hspace{-.3em}
+        } {
+            Write the Thesis
+        }
+}
+\begin{chart}[H]
+    \noindent\resizebox{\textwidth}{!}{
+        \begin{tikzpicture}[x=.1cm, y=1cm]
+            \begin{ganttchart}[
+                vgrid=true,
+%                hgrid=true,
+                x unit=1cm,
+                bar height = 1,
+                bar top shift = 0,
+                bar/.append style={fill=black!30},
+                bar label font=\small\color{black},
+                title height=1,
+                newline shortcut=true,
+                bar label node/.append style={align=right}
+                ]{1}{12}
+                \gantttitlelist{3,6,9,12,15,18,21,24,27,30,33,36}{1} \\
+                \ganttbar[name=T1]{\Tasks(1)}{1}{5} \\
+                \ganttbar[name=T2]{\Tasks(2)}{3}{6}\\
+%                             \ganttmilestone{M 1}{6} \\
+                \ganttbar[name=T3]{\Tasks(3)}{4}{6}\\
+                \ganttbar[name=T4]{\Tasks(4)}{5}{8}\\
+                \ganttbar[name=T5]{\Tasks(5)}{7}{9}\\
+                \ganttbar[name=T6]{\Tasks(6)}{8}{10}\\
+                \ganttbar[name=T7]{\Tasks(7)}{8}{11}\\
+                \ganttbar[name=T8]{\Tasks(8)}{10}{12}
+                %                \ganttlink[]{T1}{T2}
+                %                \ganttlink[]{T3}{T5}
+                %                \ganttlink[b-m]{6}{3}{6}{4}
+                %\ganttlink[m-b]{6}{4}{7}{5}
+            \end{ganttchart}
+        \end{tikzpicture}
+    }
+    \caption[\iflanguage{greek}{Χρονοδιάγραμμα}{Timetable}]{\iflanguage{greek}{Αναμενόμενο χρονοδιάγραμμα }{Provisional Timetable}}\label{gantt}
+\end{chart}

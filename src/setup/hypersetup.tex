@@ -1,0 +1,54 @@
+\ifthenelse{\equal{\Phase}{proposal}} {
+	\def\docsubject{\proposalsubject}
+}{
+	\ifthenelse{\equal{\Phase}{report}} {
+		\def\docsubject{\reportsubject}
+	} {
+		\def\docsubject{\thesissubject}
+	}
+}
+\ifthenelse{\equal{\Phase}{proposal}} {
+	\def\doctitle{\proposaltitle}
+}{
+	\ifthenelse{\equal{\Phase}{report}} {
+		\def\doctitle{\reporttitle}
+	} {
+		\def\doctitle{\thesistitle}
+	}
+}
+\expandafter\selectlanguage\expandafter{\Language}
+\newcommand{\nocolor}[1]{{\hypersetup{hidelinks}#1}}
+\hypersetup{
+	%    pdfxstandard={PDF/X-4},
+	pdflang={\iflanguage{greek}{el}{en}},
+	pdfmetalang={\iflanguage{greek}{el}{en}},
+	pdfapart={2},
+	pdfaconformance={U},
+	pdfuapart={2},
+	pdflicenseurl={https://creativecommons.org/licenses/by-nc/4.0/},
+	pdftitle={\doctitle},
+	pdfauthor={\authorname},
+	pdfsubject={\docsubject},
+	pdfkeywords={\keywords},
+	pdfcreator={LazTeX},
+	pdfproducer={LuaTeX or XeTex},
+	keeppdfinfo,
+	bookmarksopen,
+	pdfstartview={FitW}
+	pdfinfo={
+		Title={\doctitle},
+		Author={\authorname},
+		Subject={\docsubject},
+		Keywords={\keywords},
+		Lang={\iflanguage{greek}{el}{en}},
+		Creator={LazTeX},
+		Producer={LuaTeX or XeTex}
+		%        CreationDate={D:20191202022500},
+		%        ModDate={D:20200406081900}, %D: YYYYMMDDhhmmss
+	},
+	colorlinks={true},
+	citecolor={black},
+	linkcolor={linkcolour},
+	urlcolor={linkcolour},
+	pdfborder={white},
+}

@@ -1,0 +1,34 @@
+%----------------------------------------------------------------------------------------
+%	FIGURES, TABLES, CHARTS, FILES
+%----------------------------------------------------------------------------------------
+\providecommand\crefpairconjunction{ \iflanguage{greek}{και}{and} }
+\providecommand\creflastconjunction{ \iflanguage{greek}{και}{and} }
+\crefname{figure}{\iflanguage{greek}{εικόνα}{figure}}{\iflanguage{greek}{εικόνες}{figures}}
+\Crefname{figure}{\iflanguage{greek}{Εικόνα}{Figure}}{\iflanguage{greek}{Εικόνες}{Figures}}
+\crefname{table}{\iflanguage{greek}{πίνακας}{table}}{\iflanguage{greek}{πίνακες}{tables}}
+\Crefname{table}{\iflanguage{greek}{Πίνακας}{Table}}{\iflanguage{greek}{Πίνακες}{Tables}}
+\crefname{chapter}{\iflanguage{greek}{κεφάλαιο}{chapter}}{\iflanguage{greek}{κεφάλαια}{chapters}}
+\Crefname{chapter}{\iflanguage{greek}{Κεφάλαιο}{Chapter}}{\iflanguage{greek}{Κεφάλαια}{Chapters}}
+\crefname{section}{\iflanguage{greek}{ενότητα}{section}}{\iflanguage{greek}{ενότητες}{sections}}
+\Crefname{section}{\iflanguage{greek}{Ενότητα}{Section}}{\iflanguage{greek}{Ενότητες}{Sections}}
+\crefname{chart}{\iflanguage{greek}{διάγραμμα}{chart}}{\iflanguage{greek}{διαγράμματα}{charts}}
+\Crefname{chart}{\iflanguage{greek}{Διάγραμμα}{Charts}}{\iflanguage{greek}{Διαγράμματα}{Charts}}
+\crefname{listing}{\iflanguage{greek}{αρχείο}{file}}{\iflanguage{greek}{αρχεία}{files}}
+\Crefname{listing}{\iflanguage{greek}{Αρχείο}{File}}{\iflanguage{greek}{Αρχεία}{Files}}
+\crefname{appendix}{\iflanguage{greek}{παράρτημα}{appendix}}{\iflanguage{greek}{παραρτήματα}{appendices}}
+\Crefname{appendix}{\iflanguage{greek}{Παράρτημα}{Appendix}}{\iflanguage{greek}{Παραρτήματα}{Appendices}}
+\addto\captionsenglish{\renewcommand{\figurename}{Figure}}
+\addto\captionsgreek{\renewcommand{\figurename}{Εικόνα}}
+\addto\captionsenglish{\renewcommand{\chartname}{Chart}}
+\addto\captionsgreek{\renewcommand{\chartname}{Διάγραμμα}}
+\addto\captionsgreek{\renewcommand{\lstlistingname}{Αρχείο}}
+\addto\captionsenglish{\renewcommand{\lstlistingname}{File}}
+\renewcommand\listingscaption{\iflanguage{greek}{Αρχείο}{File}}
+\DeclareFloatingEnvironment[
+fileext = loc,
+listname = {\iflanguage{greek}{Κατάλογος Διαγραμμάτων}{List of charts}},
+name = {\iflanguage{greek}{Διάγραμμα}{Chart}}
+]{chart}
+\addto\captionsgreek{\renewcommand\listfigurename{Κατάλογος Εικόνων}}
+\addto\captionsenglish{\renewcommand\lstlistlistingname{List of Files}}
+\addto\captionsgreek{\renewcommand\lstlistlistingname{Κατάλογος Αρχείων}}

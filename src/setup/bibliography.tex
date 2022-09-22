@@ -1,0 +1,67 @@
+% chktex-file 1
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+%\usepackage[square, numbers, sort&compress]{natbib} % for bibliography - Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed (as in [4-7])
+%\usepackage[backend=biber]{biblatex}
+%\usepackage[longnamesfirst,round]{natbib} % Natural Sciences bibliography
+
+%\bibliographystyle{Preamble/physics_bibstyle} % You may use a different style adapted to your field
+%\bibliographystyle{acm}
+%\bibliographystyle{unsrtnat} % You may use a different style adapted to your field
+\ifxetex%
+	\special{pdf:majorversion 1}
+	\special{pdf:minorversion 4}
+	\special{pdf:compresslevel 3}
+	\special{pdf:objcompresslevel 2}
+\else
+	\pdfvariable majorversion 1
+	\pdfvariable minorversion 4
+	\pdfvariable compresslevel 3
+	\pdfvariable objcompresslevel 2
+\fi
+\usepackage[
+bibencoding=inputenc,
+backend=biber, % make sure the writing environment's (Texmaker,TeXstudio...) bibliography tool is biber, not bibtex (or use greeklish: greek letters in .bib do not work with bibtex)
+hyperref=auto,
+defernumbers=true,
+style=ieee,
+citestyle=numeric-comp,
+giveninits=true,
+sortcites = true,
+url=false,
+doi=true
+]{biblatex}
+\urlstyle{rm}
+\DefineBibliographyStrings{english}{url = \adddot\addspace\textsc{url}}
+\ifthenelse{\equal{\Phase}{proposal}} {
+	\bibliography{./bibliography/proposal.bib}
+} {
+	\ifthenelse{\equal{\Phase}{report}} {
+		\bibliography{./bibliography/report.bib}
+	} {
+		\bibliography{./bibliography/thesis.bib}
+	}
+}
+\AtEveryBibitem{%
+	\iffieldundef{doi}{}{\clearfield{url}}%
+}
+
+%----------------------------------------------------------------------------------------
+%  Keep English words like In, pp. et al., : "selectLanguage{english} before \printbibliography")
+% but change the section title
+\ifthenelse{\equal{\Language}{greek}} {
+	\selectlanguage{greek}
+	\ifthenelse{\equal{\Phase}{thesis}}{
+		\def\bibliographyTitle{Βιβλιογραφία}
+	} {
+		\def\bibliographyTitle{Αναφορές}
+	}
+	\selectlanguage{english}
+} {
+	\ifthenelse{\equal{\Phase}{thesis}}{
+		\def\bibliographyTitle{Bibliography}
+	}{
+		\def\bibliographyTitle{References}
+	}
+}

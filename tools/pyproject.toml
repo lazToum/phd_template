@@ -1,0 +1,83 @@
+[tool.black]
+line-length = 79
+skip-string-normalization=true
+include = '''
+    \.pyi?$
+'''
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.idea
+  | \.vscode
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.local
+  | _build
+  | __init__.py
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+files = '.'
+platform = 'linux'
+ignore_missing_imports = true
+disallow_untyped_defs = true
+warn_unused_ignores = false
+follow_imports = 'skip'
+exclude = [
+    '.venv',
+    '.local'
+]
+
+[tool.isort]
+profile ='black'
+skip=[
+    '.venv',
+    '.local',
+]
+include_trailing_comma=true
+force_grid_wrap=0
+use_parentheses=true
+line_length=79
+[tool.pydocstyle]
+match-dir='[^!(.venv)].*'
+
+# pylint
+[tool.pylint.master]
+load-plugins = [
+    'pylint.extensions.mccabe',
+    'pylint.extensions.redefined_variable_type',
+    'pylint.extensions.broad_try_clause'
+]
+extension-pkg-whitelist= []
+fail-under=8.0
+ignore=["CVS"]
+ignore-paths = [
+    "^(.*)/.venv/*",
+    "^(.*)/.local/.*",
+    ".venv/*",
+    ".local/.*"
+]
+
+unsafe-load-any-extension="no"
+
+[tool.pylint.messages_control]
+enable=["c-extension-no-member"]
+disable = []
+[tool.pylint.fotmat]
+max-line-length=79
+[tool.pylint.similarities]
+ignore-imports="yes"
+ignore-signatures="yes"
+min-similarity-lines=7
+[tool.pylint.design]
+max-args=5
+max-attributes=5
+
+[tool.bandit]
+tests = []
+skips = ['B404','B603']
